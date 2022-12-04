@@ -1,20 +1,129 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
+import React from 'react';
 
 
-
-function Main() {
+function Main(props) {
 
   const [inputs, setInputs] = useState({});
+  const [value1, setValue1] = useState("0.25");
+  const [value2, setValue2] = useState("0.125");
+  const [value3, setValue3] = useState("0.25");
+  const [value4, setValue4] = useState("0.02");
+  const [value5, setValue5] = useState("0.125");
+  const [value6, setValue6] = useState("0.02");
+
+  function handleChange2(event){
+    setValue1(event.target.value)
+  }
+
+function handleChange3(event){
+  setValue2(event.target.value)
+}
+
+function handleChange4(event){
+  setValue3(event.target.value)
+}
+
+function handleChange5(event){
+  setValue4(event.target.value)
+}
+
+function handleChange6(event){
+  setValue5(event.target.value)
+}
+function handleChange7(event){
+  setValue6(event.target.value)
+}
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+   }
+
+   const handleChange8 = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+   }
 
   const handleChange1 = (event) => {
+    if(isNaN(inputs.bier)){
+      inputs.bier = 0;
+    }
+    if(isNaN(inputs.wein)){
+      inputs.wein = 0;
+    }
+    if(isNaN(inputs.sekt)){
+      inputs.sekt = 0;
+    }
+    if(isNaN(inputs.likör)){
+      inputs.likör = 0;
+    }
+    if(isNaN(inputs.cocktail)){
+      inputs.cocktail = 0;
+    }
+    if(isNaN(inputs.schnaps)){
+      inputs.schnaps = 0;
+    }
+
+    if(isNaN(inputs.bier_p)){
+      inputs.bier_p = 5;
+    }
+    if(isNaN(inputs.wein_p)){
+      inputs.wein_p = 11;
+    }
+    if(isNaN(inputs.sekt_p)){
+      inputs.sekt_p = 10;
+    }
+    if(isNaN(inputs.likör_p)){
+      inputs.likör_p = 18;
+    }
+    if(isNaN(inputs.cocktail_p)){
+      inputs.cocktail_p = 30;
+    }
+    if(isNaN(inputs.schnaps_p)){
+      inputs.schnaps_p = 40;
+    }
+    
     console.log(parseInt(inputs.bier));
     console.log(parseInt(inputs.wein));
     console.log(parseInt(inputs.sekt));
     console.log(parseInt(inputs.likör));
     console.log(parseInt(inputs.cocktail));
     console.log(parseInt(inputs.schnaps));
+    console.log(parseFloat(value1));
+    console.log(parseFloat(value2));
+    console.log(parseFloat(value3));
+    console.log(parseFloat(value4));
+    console.log(parseFloat(value5));
+    console.log(parseFloat(value6));
+    console.log(parseInt(inputs.bier_p));
+    console.log(parseInt(inputs.wein_p));
+    console.log(parseInt(inputs.sekt_p));
+    console.log(parseInt(inputs.likör_p));
+    console.log(parseInt(inputs.cocktail_p));
+    console.log(parseInt(inputs.schnaps_p));
+
+    const g_bier = parseInt(inputs.bier)*parseFloat(value1) * (inputs.bier_p/100) * 0.8;
+    const g_wein = parseInt(inputs.wein)*parseFloat(value2) * (inputs.wein_p/100) * 0.8;
+    const g_sekt = parseInt(inputs.sekt)*parseFloat(value3) * (inputs.sekt_p/100) * 0.8;
+    const g_likör = parseInt(inputs.likör)*parseFloat(value4) * (inputs.likör_p/100) * 0.8;
+    const g_cocktail = parseInt(inputs.cocktail)*parseFloat(value5) * (inputs.cocktail_p/100) * 0.8;
+    const g_schnaps = parseInt(inputs.schnaps)*parseFloat(value6) * (inputs.schnaps_p/100) * 0.8;
+
+    console.log(g_bier);
+    console.log(g_wein);
+    console.log(g_sekt);
+    console.log(g_likör);
+    console.log(g_cocktail);
+    console.log(g_schnaps);
+
+    const g_ges = (g_bier + g_wein + g_sekt + g_likör + g_cocktail + g_schnaps) * 1000 ;
+    console.log(g_ges);
+    props.changerg(g_ges);
   }
 
 
@@ -28,11 +137,12 @@ function Main() {
       type="number"
       name="bier"
       value={inputs.bier}
+      onChange={handleChange}
     />
     </label>
 
     <label for="bier_amount">Amount['Liters']</label>
-    <select name="bier_amount" id="b_am">
+    <select value={value1} onChange={handleChange2}>
     <option value="0.25">0.25L</option>
     <option value="0.33">0.33L</option>
     <option value="0.5">0.5L</option>
@@ -44,8 +154,9 @@ function Main() {
     <input 
     type="number" 
     placeholder="5" 
-    name="bier"
-    value={inputs.bier_p}/>
+    name="bier_p"
+    value={inputs.bier_p}
+    onChange={handleChange}/>
     </div>
 
     <div className="field2">
@@ -54,11 +165,12 @@ function Main() {
       type="number"
       name="wein"
       value={inputs.wein}
+      onChange={handleChange}
     />
     </label>
 
     <label for="bier_amount">Amount['Liters']</label>
-    <select name="bier_amount" id="b_am">
+    <select value={value2} onChange={handleChange3}>
     <option value="0.125">0.125L</option>
     <option value="0.25">0.25L</option>
     </select>
@@ -68,8 +180,9 @@ function Main() {
     <input 
     type="number" 
     placeholder="11" 
-    name="bier"
-    value={inputs.wein_p}/>
+    name="wein_p"
+    value={inputs.wein_p}
+    onChange={handleChange8}/>
     
     </div>
 
@@ -79,12 +192,12 @@ function Main() {
       type="number"
       name="sekt"
       value={inputs.sekt}
-
+      onChange={handleChange}
     />
     </label>
 
     <label for="bier_amount">Amount['Liters']</label>
-    <select name="bier_amount" id="b_am">
+    <select value={value3} onChange={handleChange4}>
     <option value="0.25">0.25L</option>
     <option value="0.33">0.33L</option>
     <option value="0.5">0.5L</option>
@@ -96,8 +209,9 @@ function Main() {
     <input 
     type="number" 
     placeholder="10" 
-    name="bier"
-    value={inputs.sekt_p}/>
+    name="sekt_p"
+    value={inputs.sekt_p}
+    onChange={handleChange8}/>
 
     </div>
 
@@ -107,13 +221,14 @@ function Main() {
       type="number"
       name="likör"
       value={inputs.likör}
+      onChange={handleChange}
     />
     </label>
 
     <label for="bier_amount">Amount['cl']</label>
-    <select name="bier_amount" id="b_am">
-    <option value="2cl">2cl</option>
-    <option value="4cl">4cl</option>
+    <select value={value4} onChange={handleChange5}>
+    <option value="0.02">2cl</option>
+    <option value="0.04">4cl</option>
     </select>
 
     <label>Alkohol in %:
@@ -121,59 +236,69 @@ function Main() {
     <input 
     type="number" 
     placeholder="18" 
-    name="bier"
-    value={inputs.likör_p}/>
+    name="likör_p"
+    value={inputs.likör_p}
+    onChange={handleChange8}/>
 
     </div>
 
     <div className="field5">
-    <label>Cocktail:
+    <label>Cocktail: &nbsp; &nbsp;&nbsp;
     <input
       type="number"
-      name="sekt"
+      name="cocktail"
       value={inputs.cocktail}
+      onChange={handleChange}
     />
     </label>
 
     <label for="bier_amount">Amount['Liters']</label>
-    <select name="bier_amount" id="b_am">
-    <option value="0.125">0.125L</option>
-    <option value="0.25">0.25L</option>
-    <option value="0.33">0.33L</option>
+    <select value={value5} onChange={handleChange6}>
+    <option value="0.125">0.125l</option>
+    <option value="0.25">0.25l</option>
+    <option value="0.33">0.33l</option>
     </select>
+
     <label>Alkohol in %:
     </label>
     <input 
     type="number" 
     placeholder="30" 
-    name="bier"
-    value={inputs.cocktail_p}/>
+    name="cocktail_p"
+    value={inputs.cocktail_p}
+    onChange={handleChange8}/>
 
     </div>
 
+
     <div className="field6">
-    <label>Schnaps:
+    <label>Schnaps: &nbsp; &nbsp;&nbsp;
     <input
       type="number"
-      name="sekt"
+      name="schnaps"
       value={inputs.schnaps}
-
+      onChange={handleChange}
     />
     </label>
 
-    <label for="bier_amount">Amount['Liters']</label>
-    <select name="bier_amount" id="b_am">
-    <option value="0.25">2cl</option>
-    <option value="0.33">4cl</option>
+    <label for="bier_amount">Amount['cl']</label>
+    <select value={value6} onChange={handleChange7}>
+    <option value="0.02">2cl</option>
+    <option value="0.04">4cl</option>
     </select>
+
     <label>Alkohol in %:
     </label>
     <input 
     type="number" 
     placeholder="40" 
-    name="bier"
-    value={inputs.schnaps_p}/>
+    name="schnaps_p"
+    value={inputs.schnaps_p}
+    onChange={handleChange8}/>
+
     </div>
+
+    
 
     <br></br>
     <br></br>
@@ -194,9 +319,9 @@ function Table(props) {
 
 
   for (let i = 40; i <= 55; i++) {
-       values[i] = {id:i+1, U:i, I:(i/props.r).toFixed(3)};
-       values2[i] = {id2:i+14, U:i+14, I:(i/props.r).toFixed(3)};
-       values3[i] = {id3:i+29, U:i+29, I:(i/props.r).toFixed(3)};
+       values[i] = {id:i+1, U:i, I:(props.g/(i*0.7)).toFixed(3)};
+       values2[i] = {id2:i+14, U:i+14, I:(props.g/(i*0.7)).toFixed(3)};
+       values3[i] = {id3:i+30, U:i+30, I:(props.g/(i*0.7)).toFixed(3)};
   }
   const table = {};
   const table_style = {color : 'black', border: '1px solid'};
