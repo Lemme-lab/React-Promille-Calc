@@ -63,9 +63,11 @@ th, td {
   justify-content: space-between;
   max-width: 50%;
   margin: 0 auto;
-  background: #A0C5E8;
+  background: #008F8C;
   padding: 10px 0;
+  padding-left: 10px;
   color: white;
+  border-radius: 15px 15px 0px 0px;
 }
 
 .field2{
@@ -73,8 +75,9 @@ th, td {
   justify-content: space-between;
   max-width: 50%;
   margin: 0 auto;
-  background: #A0C5E8;
+  background: #008F8C;
   padding: 10px 0;
+  padding-left: 10px;
   color: white;
 }
 
@@ -83,8 +86,9 @@ th, td {
   justify-content: space-between;
   max-width: 50%;
   margin: 0 auto;
-  background: #A0C5E8;
+  background: #008F8C;
   padding: 10px 0;
+  padding-left: 10px;
   color: white;
 }
 
@@ -93,8 +97,9 @@ th, td {
   justify-content: space-between;
   max-width: 50%;
   margin: 0 auto;
-  background: #A0C5E8;
+  background: #008F8C;
   padding: 10px 0;
+  padding-left: 10px;
   color: white;
 }
 
@@ -103,8 +108,9 @@ th, td {
   justify-content: space-between;
   max-width: 50%;
   margin: 0 auto;
-  background: #A0C5E8;
+  background: #008F8C;
   padding: 10px 0;
+  padding-left: 10px;
   color: white;
 }
 
@@ -113,26 +119,38 @@ th, td {
   justify-content: space-between;
   max-width: 50%;
   margin: 0 auto;
-  background: #A0C5E8;
+  background: #008F8C;
   padding: 10px 0;
+  padding-left: 10px;
   color: white;
+  border-radius: 0px 0px 15px 15px;
 }
 
 .button1{
-  background-color: rgba(0, 125, 152, 0.475);
+  background-color: #007270;
   width: 20%;
   height: 30px;
   font-family: "Times New Roman", Times, serif;
   margin-bottom: 30px;
   font-size: 1.5em;
+  color: white;
 }
 
 .button1:hover{
-  background-color: rgba(154, 236, 255, 0.475);
+  background-color: #015958;
 }
 
 .button1:active{
-  background-color: rgba(57, 219, 255, 0.475);
+  background-color: #036e6c;
 }
 
-
+.sex{
+  background-color: #015958;
+  width: 20%;
+  height: 30px;
+  margin-bottom: 30px;
+  font-size: 1em;
+  justify-content: center;
+  color: white;
+  
+}

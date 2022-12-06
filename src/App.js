@@ -13,6 +13,7 @@ function Main(props) {
   const [value4, setValue4] = useState("0.02");
   const [value5, setValue5] = useState("0.125");
   const [value6, setValue6] = useState("0.02");
+  const [sex, setValueSex] = useState("0.8");
 
   function handleChange2(event){
     setValue1(event.target.value)
@@ -35,6 +36,10 @@ function handleChange6(event){
 }
 function handleChange7(event){
   setValue6(event.target.value)
+}
+
+function handleChangeSex(event){
+  setValueSex(parseFloat(event.target.value))
 }
 
   const handleChange = (event) => {
@@ -88,38 +93,13 @@ function handleChange7(event){
       inputs.schnaps_p = 40;
     }
     
-    console.log(parseInt(inputs.bier));
-    console.log(parseInt(inputs.wein));
-    console.log(parseInt(inputs.sekt));
-    console.log(parseInt(inputs.likör));
-    console.log(parseInt(inputs.cocktail));
-    console.log(parseInt(inputs.schnaps));
-    console.log(parseFloat(value1));
-    console.log(parseFloat(value2));
-    console.log(parseFloat(value3));
-    console.log(parseFloat(value4));
-    console.log(parseFloat(value5));
-    console.log(parseFloat(value6));
-    console.log(parseInt(inputs.bier_p));
-    console.log(parseInt(inputs.wein_p));
-    console.log(parseInt(inputs.sekt_p));
-    console.log(parseInt(inputs.likör_p));
-    console.log(parseInt(inputs.cocktail_p));
-    console.log(parseInt(inputs.schnaps_p));
 
-    const g_bier = parseInt(inputs.bier)*parseFloat(value1) * (inputs.bier_p/100) * 0.8;
-    const g_wein = parseInt(inputs.wein)*parseFloat(value2) * (inputs.wein_p/100) * 0.8;
-    const g_sekt = parseInt(inputs.sekt)*parseFloat(value3) * (inputs.sekt_p/100) * 0.8;
-    const g_likör = parseInt(inputs.likör)*parseFloat(value4) * (inputs.likör_p/100) * 0.8;
-    const g_cocktail = parseInt(inputs.cocktail)*parseFloat(value5) * (inputs.cocktail_p/100) * 0.8;
-    const g_schnaps = parseInt(inputs.schnaps)*parseFloat(value6) * (inputs.schnaps_p/100) * 0.8;
-
-    console.log(g_bier);
-    console.log(g_wein);
-    console.log(g_sekt);
-    console.log(g_likör);
-    console.log(g_cocktail);
-    console.log(g_schnaps);
+    const g_bier = parseInt(inputs.bier)*parseFloat(value1) * (inputs.bier_p/100) * sex;
+    const g_wein = parseInt(inputs.wein)*parseFloat(value2) * (inputs.wein_p/100) * sex;
+    const g_sekt = parseInt(inputs.sekt)*parseFloat(value3) * (inputs.sekt_p/100) * sex;
+    const g_likör = parseInt(inputs.likör)*parseFloat(value4) * (inputs.likör_p/100) * sex;
+    const g_cocktail = parseInt(inputs.cocktail)*parseFloat(value5) * (inputs.cocktail_p/100) * sex;
+    const g_schnaps = parseInt(inputs.schnaps)*parseFloat(value6) * (inputs.schnaps_p/100) * sex;
 
     const g_ges = (g_bier + g_wein + g_sekt + g_likör + g_cocktail + g_schnaps) * 1000 ;
     console.log(g_ges);
@@ -305,6 +285,12 @@ function handleChange7(event){
     <div>
 
       <button onClick={handleChange1} className="button1">Calculate</button>
+      <div>
+      <select className="sex" value={sex} onChange={handleChangeSex}>
+      <option value="0.8">Male</option>
+      <option value="0.6">Female</option>
+      </select>
+      </div>
 
     </div>
 
@@ -324,7 +310,7 @@ function Table(props) {
        values3[i] = {id3:i+30, U:i+30, I:(props.g/(i*0.7)).toFixed(3)};
   }
   const table = {};
-  const table_style = {color : 'black', border: '1px solid'};
+  const table_style = {color : 'black', border: '1px solid', };
 
   return (
     <div className="tables">
